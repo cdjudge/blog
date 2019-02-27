@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import App from "./components/App";
-import { createStore } from "./reducers";
+import App from './components/App';
+import reducers from './reducers';
 
 ReactDOM.render(
   <Provider store={createStore(reducers)}>
@@ -12,5 +12,3 @@ ReactDOM.render(
   </Provider>,
   document.querySelector('#root')
 );
-
-export default index;
