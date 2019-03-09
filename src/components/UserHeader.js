@@ -14,6 +14,6 @@ const mapStateToProps = state => {
   return { users: state.users };
 };
 export default connect(
-  mapStateToUsers,
+  mapStateToProps,
   { fetchUser }
 )(UserHeader);
