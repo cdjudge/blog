@@ -4,11 +4,10 @@ import { fetchUser } from '../actions';
 
 class UserHeader extends React.Component {
   componentDidMount() {
-    console.log(`UserHeader.componentDidMount(${this.props.userId})`);
-    fetchUser(this.props.userId);
+    this.props.fetchUser(this.props.userId);
   }
   render() {
-    const user = this.props.users.find(user => user.userId === this.props.userId);
+    const user = this.props.users.find(user => user.id === this.props.userId);
     if (!user) {
       return null;
     }
