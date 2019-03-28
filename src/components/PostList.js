@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
 import UserHeader from './UserHeader';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { faAngry } from '@fortawesome/free-regular-svg-icons';
+import { withStyles } from '@material-ui/core/styles';
 import {
-  List,
-  ListItemText,
-  ListItem,
+  Card,
+  CardHeader,
   Typography
 } from '@material-ui/core';
 
@@ -19,29 +16,49 @@ class PostList extends Component {
   renderList() {
     return this.props.posts.map(post => {
       return (
-        <ListItem key={post.id}>
-          <ListItemText
-            primary={
-              <React.Fragment>
-                  <FontAwesomeIcon icon={faAngry} size="2x" />
+        <Card key={post.id}>
+          <CardHeader title={post.title} subheader={post.body}>
                 <UserHeader userId={post.userId} />
                 <Typography component="h2">{post.title}</Typography>
-              </React.Fragment>
-            }
-            secondary={post.body}
-          />
-        </ListItem>
+            {post.body}
+        </CardHeader>
+        </Card>
       );
     });
   }
   render() {
-    return <List>{this.renderList()}</List>;
+    return this.renderList();
   }
 }
+const styles = theme => ({
+  card: {
+    maxWidth: 400,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+
+});
+
+
 const mapStateToProps = state => {
   return { posts: state.posts };
 };
 export default connect(
   mapStateToProps,
   { fetchPosts }
-)(PostList);
+)(withStyles(styles)(PostList));
