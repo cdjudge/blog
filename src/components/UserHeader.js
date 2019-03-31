@@ -5,14 +5,16 @@ import { fetchUser } from '../actions';
 class UserHeader extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.userId);
-    console.log(`user ${this.props.userId}`);
   }
   render() {
+
     const user = this.props.users.find(user => user.id === this.props.userId);
     if (!user) {
       return null;
     }
-    return <span>{user.name}</span>;
+    return (
+        <span>{user.name}</span>
+    );
   }
 }
 const mapStateToProps = state => {
