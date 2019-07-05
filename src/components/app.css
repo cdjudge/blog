@@ -1,4 +1,18 @@
 .class {
   font-size: 2em;
 }
+.userName {
+  margin-left: 10px;
+}
+.card {
+  border-radius: 16px;
+  margin: 6px;
+}
+.alt1 {
+  background: #dddd99;
+}
+.alt2 {
+  background: #ddddcc;
+}
+
 /*# sourceMappingURL=app.css.map */

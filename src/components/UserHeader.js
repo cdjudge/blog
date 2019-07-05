@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 class UserHeader extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.userId);
@@ -13,7 +14,7 @@ class UserHeader extends React.Component {
       return null;
     }
     return (
-        <span>{user.name}</span>
+        <span><FontAwesomeIcon icon={faUser}/><span className="userName">{user.name}</span></span>
     );
   }
 }
